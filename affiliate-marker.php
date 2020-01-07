@@ -101,7 +101,7 @@ class Links {
 
 	public function add_notice( $content ) {
 		if ( strpos( $content, 'sponsored' ) ) {
-			$content .= '<p><aside class="text-sm">' . __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you, and in return, we can offer you Travel-Dealz without annoying display advertisement. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) . '</aside></p>';
+			$content .= '<p><aside>' . __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you, and in return, we can offer you Travel-Dealz without annoying display advertisement. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) . '</aside></p>';
 		}
 		return $content;
 	}
@@ -112,3 +112,4 @@ $Nofollow = new Links;
 add_filter( 'the_content', [ $Nofollow, 'nofollow_content_links' ], 11 );
 add_filter( 'the_content', [ $Nofollow, 'add_notice' ], 20 );
 add_filter( 'wp_targeted_link_rel', [ $Nofollow, 'rel_nofollow' ], 10, 2 );
+add_action( 'wp_head', function () { echo '<style>a[rel*=sponsored]{position:relative}a[rel*=sponsored]:after{text-decoration:none;font-weight:400;display:inline-block;content:"*"}</style>'; } );
