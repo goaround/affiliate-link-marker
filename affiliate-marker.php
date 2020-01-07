@@ -5,7 +5,7 @@
  * Description: Marks Affiliate Links
  * Author:      Johannes Kinast <johannes@travel-dealz.de>
  * Author URI:  https://go-around.de
- * Version:     0.0.1
+ * Version:     0.0.2
  * Text Domain: td-affiliate-marker
  * Domain Path: /languages
  */
