@@ -106,10 +106,14 @@ class Links {
 		return $content;
 	}
 
+	public static function style_marker() {
+		echo '<style>a[rel*=sponsored]{position:relative}a[rel*=sponsored]:after{text-decoration:none;font-weight:400;display:inline-block;content:"*"}</style>';
+	}
+
 }
 $Nofollow = new Links;
 
 add_filter( 'the_content', [ $Nofollow, 'nofollow_content_links' ], 11 );
 add_filter( 'the_content', [ $Nofollow, 'add_notice' ], 20 );
 add_filter( 'wp_targeted_link_rel', [ $Nofollow, 'rel_nofollow' ], 10, 2 );
-add_action( 'wp_head', function () { echo '<style>a[rel*=sponsored]{position:relative}a[rel*=sponsored]:after{text-decoration:none;font-weight:400;display:inline-block;content:"*"}</style>'; } );
+add_action( 'wp_head', 'TD\Affiliate\Marker\Links::style_marker' );
