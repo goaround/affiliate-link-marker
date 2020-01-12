@@ -1,0 +1,20 @@
+{
+    "name": "goaround/td-affiliate-marker",
+	"description": "WordPress Plugin: Affiliate Marker",
+	"type": "wordpress-plugin",
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://wpackagist.org"
+		}
+	],
+    "authors": [
+        {
+            "name": "Johannes Kinast",
+            "email": "johannes.kinast@gmail.com"
+        }
+    ],
+	"require": {
+		"composer/installers": "^1.0"
+	}
+}
