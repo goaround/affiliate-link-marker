@@ -117,3 +117,9 @@ add_filter( 'the_content', [ $Nofollow, 'nofollow_content_links' ], 11 );
 add_filter( 'the_content', [ $Nofollow, 'add_notice' ], 20 );
 add_filter( 'wp_targeted_link_rel', [ $Nofollow, 'rel_nofollow' ], 10, 2 );
 add_action( 'wp_head', 'TD\Affiliate\Marker\Links::style_marker' );
+
+
+function load_plugin_textdomain() {
+    \load_plugin_textdomain( 'td-affiliate-marker', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'plugins_loaded', 'TD\Affiliate\Marker\load_plugin_textdomain' );
