@@ -113,6 +113,7 @@ class Links {
 	}
 
 }
+global $AffiliateLinks;
 $AffiliateLinks = new Links;
 
 add_filter( 'the_content', [ $AffiliateLinks, 'nofollow_content_links' ], 11 );
