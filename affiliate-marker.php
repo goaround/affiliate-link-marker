@@ -69,6 +69,15 @@ class Links {
 		return $content;
 	}
 
+	public function rel_nofollow( $rel, $link_html ) {
+
+		if ( preg_match( '/.*' . $this->domain_search_regex() . '.*/', $link_html ) ) {
+			return 'nofollow sponsored noopener';
+		}
+
+		return $rel;
+	}
+
 	public function domain_search_regex() {
 
 		if ( ! empty( $this->domain_search ) ) {
@@ -103,15 +112,6 @@ class Links {
 		return $match[0];
 	}
 
-	public function rel_nofollow( $rel, $link_html ) {
-
-		if ( preg_match( '/.*' . $this->domain_search_regex() . '.*/', $link_html ) ) {
-			return 'nofollow sponsored noopener';
-		}
-
-		return $rel;
-	}
-
 }
 $AffiliateLinks = new Links;
 
@@ -120,7 +120,7 @@ add_filter( 'wp_targeted_link_rel', [ $AffiliateLinks, 'rel_nofollow' ], 10, 2 )
 
 function add_notice( $content ) {
 	if ( strpos( $content, 'sponsored' ) ) {
-		$disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.','td-affiliate-marker') );
+		$disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
 		$content .= '<p><aside>' . $disclosure . '</aside></p>';
 	}
 	return $content;
@@ -137,6 +137,6 @@ if ( is_admin() ) {
 }
 
 function load_plugin_textdomain() {
-    \load_plugin_textdomain( td-affiliate-marker, FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+    \load_plugin_textdomain( 'td-affiliate-marker', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'TD\Affiliate\Marker\load_plugin_textdomain' );
