@@ -6,7 +6,7 @@ namespace TD\Affiliate\Marker;
  * Description: Marks Affiliate Links with a * and adds a disclosure at the end of the post
  * Author:      Johannes Kinast <johannes@travel-dealz.de>
  * Author URI:  https://go-around.de
- * Version:     0.1.0
+ * Version:     0.2.0
  * Text Domain: td-affiliate-marker
  * Domain Path: /languages
  */
