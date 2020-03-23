@@ -4,10 +4,10 @@ namespace TD\Affiliate\Marker\Admin;
 use \TD\Affiliate\Marker\Links;
 
 class SettingsPage {
-	private string $option_group = 'affiliate-marker-settings';
-	private string $page = 'affiliate-marker';
-	private string $disclosure;
-	private array $domains;
+	protected string $option_group = 'affiliate-marker-settings';
+	protected string $page = 'affiliate-marker';
+	protected string $disclosure;
+	protected array $domains;
 
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'add_plugin_page' ] );
@@ -15,6 +15,7 @@ class SettingsPage {
 	}
 
 	public function add_plugin_page() {
+
 		$this->disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
 		$this->domains = (array) get_option( Links::$options_name_domains, Links::$domains );
 
@@ -23,26 +24,28 @@ class SettingsPage {
 			'Affiliate Marker', // menu_title
 			'manage_options', // capability
 			$this->page, // menu_slug
-			array( $this, 'create_admin_page' ) // function
+			[ $this, 'create_admin_page' ], // callback
 		);
+
 	}
 
 	public function create_admin_page() {
-			?>
-		<div class="wrap">
-			<h2>Affiliate Marker</h2>
-			<p></p>
-			<?php settings_errors(); ?>
+		?>
+			<div class="wrap">
+				<h2>Affiliate Marker</h2>
+				<p></p>
+				<?php settings_errors(); ?>
 
-			<form method="post" action="options.php">
-				<?php
-					settings_fields( $this->option_group ); // option_group
-					do_settings_sections( $this->page ); // page
-					submit_button();
-				?>
-			</form>
-		</div>
-	<?php }
+				<form method="post" action="options.php">
+					<?php
+						settings_fields( $this->option_group ); // option_group
+						do_settings_sections( $this->page ); // page
+						submit_button();
+					?>
+				</form>
+			</div>
+		<?php
+	}
 
 	public function page_init() {
 		register_setting(
@@ -111,8 +114,6 @@ class SettingsPage {
 	}
 
 	public function sanitize_domains( $input ) {
-		// print_r($input);
-		// exit;
 		$domains_textarea = trim( esc_textarea( $input ) );
 		$domains = (array) explode( PHP_EOL, $domains_textarea );
 		$domains = array_map( 'trim', $domains );
@@ -150,5 +151,3 @@ class SettingsPage {
 	}
 
 }
-
-$affiliate_marker_settings_page = new SettingsPage();

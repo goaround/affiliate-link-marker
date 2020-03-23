@@ -84,7 +84,11 @@ class Links {
 			return $this->domain_search;
 		}
 
-		$domains = get_option( Links::$options_name_domains, Links::$domains );
+		if ( is_plugin_active_for_network( 'td-affiliate-marker/affiliate-marker.php' ) ) {
+			$domains = get_site_option( Links::$options_name_domains, Links::$domains );
+		} else {
+			$domains = get_option( Links::$options_name_domains, Links::$domains );
+		}
 
 		$domains = array_map( function( $value ) {
 			return preg_quote( $value, '/' );
@@ -121,7 +125,11 @@ add_filter( 'wp_targeted_link_rel', [ $AffiliateLinks, 'rel_nofollow' ], 10, 2 )
 
 function add_notice( $content ) {
 	if ( strpos( $content, 'sponsored' ) ) {
-		$disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
+		if ( is_plugin_active_for_network( 'td-affiliate-marker/affiliate-marker.php' ) ) {
+			$disclosure = get_site_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
+		} else {
+			$disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
+		}
 		$content .= '<p><aside>' . $disclosure . '</aside></p>';
 	}
 	return $content;
@@ -135,6 +143,12 @@ add_action( 'wp_head', __NAMESPACE__ . '\style' );
 
 if ( is_admin() ) {
 	require_once __DIR__ . '/admin/settings-page.php';
+	require_once __DIR__ . '/admin/settings-page-network.php';
+	if ( is_plugin_active_for_network( 'td-affiliate-marker/affiliate-marker.php' ) ) {
+		new namespace\Admin\NetworkSettingsPage();
+	} else {
+		new namespace\Admin\SettingsPage();
+	}
 }
 
 function load_plugin_textdomain() {
