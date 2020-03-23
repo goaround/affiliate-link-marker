@@ -13,42 +13,29 @@ namespace TD\Affiliate\Marker;
 
 class Links {
 	public static $domains = [
-		'/go/',
-		'partners.webmasterplan.com',
-		'track.webgains.com',
-		'ad.zanox.com',
-		'awin1.com',
-		'financeads.net',
-		'prf.hn',
-		'belboon.de',
-		'tradedoubler.com',
-		'adcell.de',
-		'tc.tradetracker.net',
+		'partners.webmasterplan.com', // Affili.net
+		'track.webgains.com', // Webgains
+		'ad.zanox.com', // Zanox
+		'awin1.com', // AWIN
+		'financeads.net', // financeAds
+		'prf.hn', // Performance Horizon
+		'belboon.de', // Belboon
+		'tradedoubler.com', // Tradedoubler
+		'adcell.de', // Adcell
+		'tc.tradetracker.net', // TradeTracker
 		'ds1.nl', // Daisycon
-		'shareasale.com',
+		'shareasale.com', // ShareASale
 		'jdoqocy.com', 'tkqlhce.com', 'anrdoezrs.net', 'dpbolvw.net', // CJ.com
 		'l.neqty.net', // FinanceQuality
-		'/c/297275', // Impact
 		'c.trackmytarget.com', //Target Circle
 		'action.metaffiliation.com', // NetAffiliation
 		'work.selecdoo.com', // Selecdoo
 		'viglink.com', // Viglink
-		'go2.travel-dealz',
-		'mytrain.de',
-		'booking.com',
-		'partner.zenmate.com',
-		'billiger-mietwagen.de',
-		'amazon',
-		'rover.ebay.com',
-		'skyscanner',
-		'jetradar',
-		'getyourguide',
-		'secretescapes',
-		't.groupon',
-		'virtuoso.com',
+		'amazon', // Amazon PartnerNet
+		'rover.ebay.com', // eBay Partner Network
+		't.groupon', // Groupon
 		'pvn.mediamarkt.de', 'pvn.saturn.de', // Saturn + Media Markt Private Network
 		'stacksocial.com', 'citizengoods.com', 'skillwise.com', 'joyus.com', // StackCommerce
-		'airportag.com',
 	];
 
 	public static string $options_name_disclosure = 'affiliate_marker_disclosure';
