@@ -71,7 +71,7 @@ class NetworkSettingsPage extends SettingsPage {
 	}
 
 	public function section_disclosure() {
-		_e( 'Manage the Disclosure from each Blog Settings.', 'td-affiliate-marker' );
+		_e( 'Manage the Disclosure from each Blog Settings.', 'affiliate-marker' );
 	}
 
 }

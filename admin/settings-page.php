@@ -15,7 +15,7 @@ class SettingsPage {
 
 	public function add_plugin_page() {
 
-		$this->disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
+		$this->disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'affiliate-marker' ) );
 
 		add_options_page(
 			'Affiliate Marker', // page_title
@@ -49,14 +49,14 @@ class SettingsPage {
 
 		add_settings_section(
 			'affiliate_marker_disclosure_section', // id
-			__( 'Affiliate Disclosure','td-affiliate-marker'), // title
+			__( 'Affiliate Disclosure','affiliate-marker'), // title
 			[ $this, 'section_disclosure' ], // callback
 			$this->page // page
 		);
 
 		add_settings_section(
 			'affiliate_marker_domain_section', // id
-			__( 'Affiliate Domains','td-affiliate-marker'), // title
+			__( 'Affiliate Domains','affiliate-marker'), // title
 			[ $this, 'section_domains' ], // callback
 			$this->page // page
 		);
@@ -73,13 +73,13 @@ class SettingsPage {
 				'description' => 'Affiliate disclosure printed on the button of every post which includes at least one affiliate Link.',
 				'sanitize_callback' => [ $this, 'sanitize_disclosure' ],
 				'show_in_rest' => true,
-				'default' => __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ),
+				'default' => __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'affiliate-marker' ),
 			],
 		);
 
 		add_settings_field(
 			Links::$options_name_disclosure, // id
-			__( 'Disclosure Text','td-affiliate-marker'), // title
+			__( 'Disclosure Text','affiliate-marker'), // title
 			[ $this, 'disclosure_callback' ], // callback
 			$this->page, // page
 			'affiliate_marker_disclosure_section', // section
@@ -105,7 +105,7 @@ class SettingsPage {
 
 		add_settings_field(
 			Links::$options_name_domains, // id
-			__( 'Domains','td-affiliate-marker'), // title
+			__( 'Domains','affiliate-marker'), // title
 			[ $this, 'domains_callback' ], // callback
 			$this->page, // page
 			'affiliate_marker_domain_section', // section
@@ -130,11 +130,11 @@ class SettingsPage {
 	}
 
 	public function section_disclosure() {
-		_e( 'The Disclosure, displayed at the end of each post which includes at least one Affiliate Link.','td-affiliate-marker');
+		_e( 'The Disclosure, displayed at the end of each post which includes at least one Affiliate Link.','affiliate-marker');
 	}
 
 	public function section_domains() {
-		printf(	__( 'Manage your Domains from your <a href="%s">Network Admin Area</a>.', 'td-affiliate-marker' ), add_query_arg( [ 'page' => $this->page ], network_admin_url( 'settings.php' ) ) );
+		printf(	__( 'Manage your Domains from your <a href="%s">Network Admin Area</a>.', 'affiliate-marker' ), add_query_arg( [ 'page' => $this->page ], network_admin_url( 'settings.php' ) ) );
 	}
 
 	public function disclosure_callback( $args ) {

@@ -1,14 +1,16 @@
 <?php
 namespace TD\Affiliate\Marker;
 /**
- * Plugin Name:  Affiliate Link Marker
- * Plugin URI:
- * Description: Marks Affiliate Links with a * and adds a disclosure at the end of the post
- * Author:      Johannes Kinast <johannes@travel-dealz.de>
- * Author URI:  https://go-around.de
- * Version:     0.3.0
- * Text Domain: td-affiliate-marker
- * Domain Path: /languages
+ * Plugin Name:			Affiliate Link Marker
+ * Plugin URI:			https://go-around.de/plugin/affiliate-marker
+ * Description:			Marks Affiliate Links with a * and adds a disclosure at the end of the post.
+ * Version:				0.3.0
+ * Requires at least: 	4.6
+ * Requires PHP:		7.0
+ * Author:				Johannes Kinast <johannes@travel-dealz.de>
+ * Author URI:			https://profiles.wordpress.org/goaroundagain/
+ * License:				GPL v2 or later
+ * License URI:			https://www.gnu.org/licenses/gpl-2.0.html
  */
 
 class Links {
@@ -104,6 +106,7 @@ class Links {
 	}
 
 }
+
 global $AffiliateLinks;
 $AffiliateLinks = new Links;
 
@@ -112,7 +115,7 @@ add_filter( 'wp_targeted_link_rel', [ $AffiliateLinks, 'rel_nofollow' ], 10, 2 )
 
 function add_notice( $content ) {
 	if ( strpos( $content, 'sponsored' ) ) {
-		$disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
+		$disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'affiliate-marker' ) );
 		$content .= '<p><aside class="affiliate-links-disclosure">' . $disclosure . '</aside></p>';
 	}
 	return $content;
@@ -147,8 +150,3 @@ function admin_init() {
 
 }
 add_action( 'init', __NAMESPACE__ . '\admin_init' );
-
-function load_plugin_textdomain() {
-    \load_plugin_textdomain( 'td-affiliate-marker', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
-}
-add_action( 'plugins_loaded', __NAMESPACE__ . '\load_plugin_textdomain' );

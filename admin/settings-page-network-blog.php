@@ -15,7 +15,7 @@ class NetworkBlogSettingsPage extends SettingsPage {
 	}
 
 	public function section_domains() {
-		printf(	__( 'Manage your Domains from your <a href="%s">Network Admin Area</a>.', 'td-affiliate-marker' ), add_query_arg( [ 'page' => $this->page ], network_admin_url( 'settings.php' ) ) );
+		printf(	__( 'Manage your Domains from your <a href="%s">Network Admin Area</a>.', 'affiliate-marker' ), add_query_arg( [ 'page' => $this->page ], network_admin_url( 'settings.php' ) ) );
 	}
 
 }
