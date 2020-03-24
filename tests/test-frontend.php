@@ -33,7 +33,7 @@ class FrontendTest extends WP_UnitTestCase {
 		$post = get_post( $post_id );
 		$content = apply_filters( 'the_content', $post->post_content );
 
-		$this->assertContains( __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ), $content );
+		$this->assertContains( __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'affiliate-marker' ), $content );
 
 	}
 
@@ -46,7 +46,7 @@ class FrontendTest extends WP_UnitTestCase {
 		$post = get_post( $post_id );
 		$content = apply_filters( 'the_content', $post->post_content );
 
-		$this->assertNotContains( __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ), $content );
+		$this->assertNotContains( __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'affiliate-marker' ), $content );
 
 	}
 
