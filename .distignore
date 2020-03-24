@@ -1,0 +1,11 @@
+/.wordpress-org
+/.git
+/.github
+/bin
+/tests
+.gitignore
+.phpcs.xml.dist
+.tavis.yml
+composer.json
+composer.lock
+phpunit.xml.dist
