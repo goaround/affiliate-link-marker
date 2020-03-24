@@ -134,7 +134,7 @@ class SettingsPage {
 	}
 
 	public function section_domains() {
-		printf(	__( 'Manage your Domains from your <a href="%s">Network Admin Area</a>.', 'affiliate-marker' ), add_query_arg( [ 'page' => $this->page ], network_admin_url( 'settings.php' ) ) );
+		_e( 'List of Domains and URL parts to detect Affiliate Links in your content. One per line. Can include full Domains e.g. "amazon.com" or just parts of it e.g. "amazon"', 'affiliate-marker' );
 	}
 
 	public function disclosure_callback( $args ) {
