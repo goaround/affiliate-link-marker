@@ -113,7 +113,7 @@ add_filter( 'wp_targeted_link_rel', [ $AffiliateLinks, 'rel_nofollow' ], 10, 2 )
 function add_notice( $content ) {
 	if ( strpos( $content, 'sponsored' ) ) {
 		$disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
-		$content .= '<p><aside>' . $disclosure . '</aside></p>';
+		$content .= '<p><aside class="affiliate-links-disclosure">' . $disclosure . '</aside></p>';
 	}
 	return $content;
 }
