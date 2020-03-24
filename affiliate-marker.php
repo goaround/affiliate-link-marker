@@ -71,7 +71,7 @@ class Links {
 			return $this->domain_search;
 		}
 
-		if ( is_plugin_active_for_network( 'affiliate-marker/affiliate-marker.php' ) ) {
+		if ( is_multisite() && isset( get_site_option( 'active_sitewide_plugins', [] )[ 'affiliate-marker/affiliate-marker.php' ] ) ) {
 			$domains = get_site_option( Links::$options_name_domains, Links::$domains );
 		} else {
 			$domains = get_option( Links::$options_name_domains, Links::$domains );
@@ -112,11 +112,7 @@ add_filter( 'wp_targeted_link_rel', [ $AffiliateLinks, 'rel_nofollow' ], 10, 2 )
 
 function add_notice( $content ) {
 	if ( strpos( $content, 'sponsored' ) ) {
-		if ( is_plugin_active_for_network( 'affiliate-marker/affiliate-marker.php' ) ) {
-			$disclosure = get_site_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
-		} else {
-			$disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
-		}
+		$disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
 		$content .= '<p><aside>' . $disclosure . '</aside></p>';
 	}
 	return $content;
@@ -128,17 +124,31 @@ function style() {
 }
 add_action( 'wp_head', __NAMESPACE__ . '\style' );
 
-if ( is_admin() ) {
-	require_once __DIR__ . '/admin/settings-page.php';
-	require_once __DIR__ . '/admin/settings-page-network.php';
-	if ( is_plugin_active_for_network( 'affiliate-marker/affiliate-marker.php' ) ) {
-		new namespace\Admin\NetworkSettingsPage();
-	} else {
-		new namespace\Admin\SettingsPage();
+function admin_init() {
+
+	if ( ! is_admin() ) {
+		return;
 	}
+
+	require_once __DIR__ . '/admin/settings-page.php';
+
+	if ( is_multisite() && isset( get_site_option( 'active_sitewide_plugins', [] )[ 'affiliate-marker/affiliate-marker.php' ] ) ) {
+		if ( is_network_admin() ) {
+			require_once __DIR__ . '/admin/settings-page-network.php';
+			new namespace\Admin\NetworkSettingsPage();
+		} else {
+			require_once __DIR__ . '/admin/settings-page-network-blog.php';
+			new namespace\Admin\NetworkBlogSettingsPage();
+		}
+	} else {
+		require_once __DIR__ . '/admin/settings-page-single.php';
+		new namespace\Admin\SingleSettingsPage();
+	}
+
 }
+add_action( 'init', __NAMESPACE__ . '\admin_init' );
 
 function load_plugin_textdomain() {
     \load_plugin_textdomain( 'td-affiliate-marker', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
-add_action( 'plugins_loaded', 'TD\Affiliate\Marker\load_plugin_textdomain' );
+add_action( 'plugins_loaded', __NAMESPACE__ . '\load_plugin_textdomain' );

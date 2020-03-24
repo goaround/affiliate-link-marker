@@ -1,13 +1,12 @@
 <?php
 namespace TD\Affiliate\Marker\Admin;
 
-use \TD\Affiliate\Marker\Links;
+use TD\Affiliate\Marker\Links;
 
 class SettingsPage {
 	protected string $option_group = 'affiliate-marker-settings';
 	protected string $page = 'affiliate-marker';
 	protected string $disclosure;
-	protected array $domains;
 
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'add_plugin_page' ] );
@@ -17,7 +16,6 @@ class SettingsPage {
 	public function add_plugin_page() {
 
 		$this->disclosure = get_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
-		$this->domains = (array) get_option( Links::$options_name_domains, Links::$domains );
 
 		add_options_page(
 			'Affiliate Marker', // page_title
@@ -48,27 +46,6 @@ class SettingsPage {
 	}
 
 	public function page_init() {
-		register_setting(
-			$this->option_group, // option_group
-			Links::$options_name_disclosure, // option_name
-			[
-				'type' => 'string',
-				'description' => 'Affiliate disclosure printed on the button of every post which includes at least one affiliate Link.',
-				'sanitize_callback' => [ $this, 'sanitize_disclosure' ],
-				'show_in_rest' => true,
-				'default' => __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ),
-			],
-		);
-
-		register_setting(
-			$this->option_group, // option_group
-			Links::$options_name_domains, // option_name
-			[
-				'description' => 'List of affiliate domains',
-				'sanitize_callback' => [ $this, 'sanitize_domains' ],
-				'default' => \TD\Affiliate\Marker\Links::$domains,
-			],
-		);
 
 		add_settings_section(
 			'affiliate_marker_disclosure_section', // id
@@ -84,6 +61,22 @@ class SettingsPage {
 			$this->page // page
 		);
 
+	}
+
+	protected function register_setting_disclosure() {
+
+		register_setting(
+			$this->option_group, // option_group
+			Links::$options_name_disclosure, // option_name
+			[
+				'type' => 'string',
+				'description' => 'Affiliate disclosure printed on the button of every post which includes at least one affiliate Link.',
+				'sanitize_callback' => [ $this, 'sanitize_disclosure' ],
+				'show_in_rest' => true,
+				'default' => __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ),
+			],
+		);
+
 		add_settings_field(
 			Links::$options_name_disclosure, // id
 			__( 'Disclosure Text','td-affiliate-marker'), // title
@@ -93,6 +86,20 @@ class SettingsPage {
 			[
 				'label_for' => Links::$options_name_disclosure,
 				'class' => 'large-text',
+			],
+		);
+
+	}
+
+	protected function register_setting_domains() {
+
+		register_setting(
+			$this->option_group, // option_group
+			Links::$options_name_domains, // option_name
+			[
+				'description' => 'List of affiliate domains',
+				'sanitize_callback' => [ $this, 'sanitize_domains' ],
+				'default' => \TD\Affiliate\Marker\Links::$domains,
 			],
 		);
 
@@ -107,6 +114,7 @@ class SettingsPage {
 				'class' => 'large-text',
 			],
 		);
+
 	}
 
 	public function sanitize_disclosure( $input ) {
@@ -126,7 +134,7 @@ class SettingsPage {
 	}
 
 	public function section_domains() {
-		_e( 'List of Domains and URL parts to detect Affiliate Links in your content. One per line. Can include full Domains e.g. "amazon.com" or just parts of it e.g. "amazon"','td-affiliate-marker');
+		printf(	__( 'Manage your Domains from your <a href="%s">Network Admin Area</a>.', 'td-affiliate-marker' ), add_query_arg( [ 'page' => $this->page ], network_admin_url( 'settings.php' ) ) );
 	}
 
 	public function disclosure_callback( $args ) {

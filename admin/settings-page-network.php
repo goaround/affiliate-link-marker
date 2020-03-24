@@ -1,7 +1,7 @@
 <?php
 namespace TD\Affiliate\Marker\Admin;
 
-use \TD\Affiliate\Marker\Links;
+use TD\Affiliate\Marker\Links;
 use TD\Affiliate\Marker\Admin\SettingsPage;
 
 class NetworkSettingsPage extends SettingsPage {
@@ -12,7 +12,6 @@ class NetworkSettingsPage extends SettingsPage {
 	}
 
 	public function add_plugin_page() {
-		$this->disclosure = get_site_option( Links::$options_name_disclosure, __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'td-affiliate-marker' ) );
 		$this->domains = (array) get_site_option( Links::$options_name_domains, Links::$domains );
 
 		add_submenu_page(
@@ -25,6 +24,14 @@ class NetworkSettingsPage extends SettingsPage {
 		);
 
 		add_action( 'network_admin_edit_affiliate_marker_settings', [ $this, 'save_setttings' ] );
+
+	}
+
+	public function page_init() {
+
+		parent::page_init();
+
+		$this->register_setting_domains();
 
 	}
 
@@ -49,7 +56,6 @@ class NetworkSettingsPage extends SettingsPage {
 	public function save_setttings() {
 		check_admin_referer( $this->option_group );
 
-		update_site_option( Links::$options_name_disclosure, $_POST['affiliate_marker_disclosure'] ?? '' );
 		update_site_option( Links::$options_name_domains, $_POST['affiliate_marker_domains'] ?? '' );
 
 		wp_redirect( add_query_arg(
@@ -62,6 +68,10 @@ class NetworkSettingsPage extends SettingsPage {
 
 		exit;
 
+	}
+
+	public function section_disclosure() {
+		_e( 'Manage the Disclosure from each Blog Settings.', 'td-affiliate-marker' );
 	}
 
 }
