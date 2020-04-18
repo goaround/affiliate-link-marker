@@ -53,6 +53,10 @@ The following Affiliate Networks with the corresponding tracking domains are sup
 
 == Frequently Asked Questions ==
 
+= Can I change the style of the disclosure? =
+
+There is a CSS applied to the disclosure `affiliate-marker-disclosure`. You can change e.g. the font size with some custom CSS `.affiliate-marker-disclosure { font-size: small; }`.
+
 = Does it works with JavaScript tracking code? =
 
 It only works with HTML `<a href="">` links, not with crazy JavaScript tracking code like `onclick="..."`
