@@ -1,7 +1,7 @@
 <?php
-namespace TD\Affiliate\Marker\Admin;
+namespace Affiliate_Marker\Admin;
 
-use TD\Affiliate\Marker\Links;
+use Affiliate_Marker\Links;
 
 class SettingsPage {
 	protected string $option_group = 'affiliate-marker-settings';
@@ -99,7 +99,7 @@ class SettingsPage {
 			[
 				'description' => 'List of affiliate domains',
 				'sanitize_callback' => [ $this, 'sanitize_domains' ],
-				'default' => \TD\Affiliate\Marker\Links::$domains,
+				'default' => \Affiliate_Marker\Links::$domains,
 			],
 		);
 

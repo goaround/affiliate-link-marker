@@ -1,6 +1,6 @@
 <?php
 
-use TD\Affiliate\Marker\Links;
+use Affiliate_Marker\Links;
 
 
 class OptionsTest extends WP_UnitTestCase {

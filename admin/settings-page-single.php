@@ -1,8 +1,8 @@
 <?php
-namespace TD\Affiliate\Marker\Admin;
+namespace Affiliate_Marker\Admin;
 
-use TD\Affiliate\Marker\Links;
-use TD\Affiliate\Marker\Admin\SettingsPage;
+use Affiliate_Marker\Links;
+use Affiliate_Marker\Admin\SettingsPage;
 
 class SingleSettingsPage extends SettingsPage {
 

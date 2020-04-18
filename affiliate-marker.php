@@ -1,5 +1,5 @@
 <?php
-namespace TD\Affiliate\Marker;
+namespace Affiliate_Marker;
 /**
  * Plugin Name:			Affiliate Link Marker
  * Plugin URI:			https://go-around.de/plugin/affiliate-marker
