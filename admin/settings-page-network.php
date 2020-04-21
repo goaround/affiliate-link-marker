@@ -56,7 +56,7 @@ class NetworkSettingsPage extends SettingsPage {
 	public function save_setttings() {
 		check_admin_referer( $this->option_group );
 
-		update_site_option( Links::$options_name_domains, $_POST['affiliate_marker_domains'] ?? '' );
+		update_site_option( Links::$options_name_domains, sanitize_textarea_field( $_POST['affiliate_marker_domains'] ?? '' ) );
 
 		wp_redirect( add_query_arg(
 			[
