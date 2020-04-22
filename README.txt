@@ -25,7 +25,7 @@ The following Affiliate Networks with the corresponding tracking domains are sup
 * Webgains `track.webgains.com`
 * Zanox `ad.zanox.com`
 * AWIN `awin1.com`
-* financeAds `financeads.net
+* financeAds `financeads.net`
 * Performance Horizon/Partnerize `prf.hn`
 * Belboon `belboon.de`
 * Tradedoubler `tradedoubler.com`
