@@ -4,9 +4,9 @@ namespace Affiliate_Marker\Admin;
 use Affiliate_Marker\Links;
 
 class SettingsPage {
-	protected string $option_group = 'affiliate-marker-settings';
-	protected string $page = 'affiliate-marker';
-	protected string $disclosure;
+	protected $option_group = 'affiliate-marker-settings';
+	protected $page = 'affiliate-marker';
+	protected $disclosure;
 
 	public function __construct() {
 		add_action( 'admin_menu', [ $this, 'add_plugin_page' ] );

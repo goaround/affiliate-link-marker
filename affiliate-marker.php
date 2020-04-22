@@ -40,8 +40,8 @@ class Links {
 		'stacksocial.com', 'citizengoods.com', 'skillwise.com', 'joyus.com', // StackCommerce
 	];
 
-	public static string $options_name_disclosure = 'affiliate_marker_disclosure';
-	public static string $options_name_domains = 'affiliate_marker_domains';
+	public static $options_name_disclosure = 'affiliate_marker_disclosure';
+	public static $options_name_domains = 'affiliate_marker_domains';
 
 	public $domain_search = '';
 

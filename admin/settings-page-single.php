@@ -6,7 +6,7 @@ use Affiliate_Marker\Admin\SettingsPage;
 
 class SingleSettingsPage extends SettingsPage {
 
-	protected array $domains;
+	protected $domains;
 
 	public function add_plugin_page() {
 
