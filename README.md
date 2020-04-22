@@ -7,7 +7,7 @@ Works great with Multisites. If activated networkwide, you can manage your affil
 
 The following Affiliate Networks with the corresponding tracking domains are supported out of the box (but you can add your own or remove unused):
 * Amazon PartnerNet `amazon`
-* Affili.net `partners.webmasterplan.com``
+* Affili.net `partners.webmasterplan.com`
 * Webgains `track.webgains.com`
 * Zanox `ad.zanox.com`
 * AWIN `awin1.com`
