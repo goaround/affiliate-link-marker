@@ -7,9 +7,9 @@ namespace Affiliate_Marker;
  * Version:			1.0.0
  * Requires at least: 		4.6
  * Requires PHP:		7.0
- * Author:				Johannes Kinast <johannes@travel-dealz.de>
+ * Author:			Johannes Kinast <johannes@travel-dealz.de>
  * Author URI:			https://profiles.wordpress.org/goaroundagain/
- * License:				GPL v2 or later
+ * License:			GPL v2 or later
  * License URI:			https://www.gnu.org/licenses/gpl-2.0.html
  */
 
