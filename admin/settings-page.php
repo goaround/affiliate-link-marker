@@ -142,7 +142,7 @@ class SettingsPage {
 			'<input class="%s" type="text" name="%s" id="affiliate_marker_disclosure" value="%s">',
 			$args['class'] ?? '',
 			$args['label_for'] ?? '',
-			$this->disclosure,
+			$this->disclosure
 		);
 	}
 
