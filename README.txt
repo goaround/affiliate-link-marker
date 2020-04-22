@@ -49,7 +49,7 @@ The following Affiliate Networks with the corresponding tracking domains are sup
 1. Upload the folder `affiliate-marker` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Go to `Settings` → `Affiliate Marker` and add your own affiliate domains or change the default disclosure.
-1. Add an affiliate link to one of your post and check out the `*` in the front end next to the link and the disclosure at the end of your post.
+1. Add an affiliate link to one of your post and you'll see the `*` in the front end next to the link and the disclosure at the end of your post.
 
 == Frequently Asked Questions ==
 
@@ -57,14 +57,14 @@ The following Affiliate Networks with the corresponding tracking domains are sup
 
 There is a CSS applied to the disclosure `affiliate-marker-disclosure`. You can change e.g. the font size with some custom CSS `.affiliate-marker-disclosure { font-size: small; }`.
 
-= Does it works with JavaScript tracking code? =
+= Does it work with JavaScript tracking code? =
 
 It only works with HTML `<a href="">` links, not with crazy JavaScript tracking code like `onclick="..."`
 
 == Screenshots ==
 
 1. Add your own affiliate related domains or any part of an affiliate links that identifies your affiliate link and change the disclosure text
-1. Every affiliate links is marked by a `*` next to the link text and at the end of post the disclosure will be attached
+1. Every affiliate link is marked by a `*` next to the link text and at the end of post the disclosure will be attached
 
 == Changelog ==
 
