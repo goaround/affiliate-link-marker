@@ -22,7 +22,7 @@ class SettingsPage {
 			'Affiliate Marker', // menu_title
 			'manage_options', // capability
 			$this->page, // menu_slug
-			[ $this, 'create_admin_page' ], // callback
+			[ $this, 'create_admin_page' ] // callback
 		);
 
 	}
@@ -74,7 +74,7 @@ class SettingsPage {
 				'sanitize_callback' => [ $this, 'sanitize_disclosure' ],
 				'show_in_rest' => true,
 				'default' => __( '* What the star implies: Links marked with a * mean that we will receive a commission if a booking or a specific action is made via the linked provider. There will be no additional costs for you. Also, we won\'t receive any money just by setting links.', 'affiliate-marker' ),
-			],
+			]
 		);
 
 		add_settings_field(
@@ -86,7 +86,7 @@ class SettingsPage {
 			[
 				'label_for' => Links::$options_name_disclosure,
 				'class' => 'large-text',
-			],
+			]
 		);
 
 	}
@@ -100,7 +100,7 @@ class SettingsPage {
 				'description' => 'List of affiliate domains',
 				'sanitize_callback' => [ $this, 'sanitize_domains' ],
 				'default' => \Affiliate_Marker\Links::$domains,
-			],
+			]
 		);
 
 		add_settings_field(
@@ -112,7 +112,7 @@ class SettingsPage {
 			[
 				'label_for' => Links::$options_name_domains,
 				'class' => 'large-text',
-			],
+			]
 		);
 
 	}
@@ -154,7 +154,7 @@ class SettingsPage {
 			'<textarea class="%s" rows="30" name="%s" id="affiliate_marker_domains">%s</textarea>',
 			$args['class'] ?? '',
 			$args['label_for'] ?? '',
-			implode( PHP_EOL, $domains ),
+			implode( PHP_EOL, $domains )
 		);
 	}
 

@@ -63,7 +63,7 @@ class NetworkSettingsPage extends SettingsPage {
 				'page' => $this->page,
 				'updated' => true
 			],
-			network_admin_url( 'settings.php' ),
+			network_admin_url( 'settings.php' )
 		) );
 
 		exit;
