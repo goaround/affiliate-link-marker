@@ -1,4 +1,4 @@
-# Affiliate Marker
+# Affiliate Link Marker
 A WordPress Plugin to mark your Affiliate Links with a `*`, add `rel="nofollow sponsored noopener"` to affiliate links and attach a disclosure at the end of every post which contains at least one affiliate link.
 
 You can manage your own list of affiliate tracking domains or URL parts (used to detect affiliate links) and change the disclosure text.
@@ -12,7 +12,7 @@ The following Affiliate Networks with the corresponding tracking domains are sup
 * Webgains `track.webgains.com`
 * Zanox `ad.zanox.com`
 * AWIN `awin1.com`
-* financeAds `financeads.net
+* financeAds `financeads.net`
 * Performance Horizon/Partnerize `prf.hn`
 * Belboon `belboon.de`
 * Tradedoubler `tradedoubler.com`
