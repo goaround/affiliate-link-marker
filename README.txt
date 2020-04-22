@@ -1,4 +1,4 @@
-=== Affiliate Marker ===
+=== Affiliate Link Marker ===
 Contributors: goaroundagain
 Donate link:
 Tags: affiliate, links, sponsored, nofollow, multisite
