@@ -20,7 +20,7 @@ class NetworkSettingsPage extends SettingsPage {
 			'Affiliate Marker', // menu_title
 			'manage_options', // Capability
 			$this->page, // menu_slug
-			[ $this, 'create_admin_page' ], // callback
+			[ $this, 'create_admin_page' ] // callback
 		);
 
 		add_action( 'network_admin_edit_affiliate_marker_settings', [ $this, 'save_setttings' ] );
