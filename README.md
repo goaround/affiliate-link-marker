@@ -6,6 +6,7 @@ You can manage your own list of affiliate tracking domains or URL parts (used to
 Works great with Multisites. If activated networkwide, you can manage your affiliate domains from your Network Admin Area and the disclosure (e.g. translated) for every single page.
 
 The following Affiliate Networks with the corresponding tracking domains are supported out of the box (but you can add your own or remove unused):
+
 * Amazon PartnerNet `amazon`
 * Affili.net `partners.webmasterplan.com`
 * Webgains `track.webgains.com`
