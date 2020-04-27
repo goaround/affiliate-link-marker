@@ -69,7 +69,7 @@ It only works with HTML `<a href="">` links, not with crazy JavaScript tracking 
 
 == Changelog ==
 
-= 1.0.4
+= 1.0.4 =
 
 * Fixed some PHP compatibility issues
 
