@@ -73,7 +73,7 @@ class Links {
 			return $this->domain_search;
 		}
 
-		if ( is_multisite() && isset( get_site_option( 'active_sitewide_plugins', [] )[ 'affiliate-marker/affiliate-marker.php' ] ) ) {
+		if ( is_multisite() && isset( get_site_option( 'active_sitewide_plugins', [] )[ 'affiliate-link-marker/affiliate-marker.php' ] ) ) {
 			$domains = get_site_option( Links::$options_name_domains, Links::$domains );
 		} else {
 			$domains = get_option( Links::$options_name_domains, Links::$domains );
@@ -135,7 +135,7 @@ function admin_init() {
 
 	require_once __DIR__ . '/admin/settings-page.php';
 
-	if ( is_multisite() && isset( get_site_option( 'active_sitewide_plugins', [] )[ 'affiliate-marker/affiliate-marker.php' ] ) ) {
+	if ( is_multisite() && isset( get_site_option( 'active_sitewide_plugins', [] )[ 'affiliate-link-marker/affiliate-marker.php' ] ) ) {
 		if ( is_network_admin() ) {
 			require_once __DIR__ . '/admin/settings-page-network.php';
 			new namespace\Admin\NetworkSettingsPage();
