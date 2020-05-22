@@ -69,6 +69,10 @@ It only works with HTML `<a href="">` links, not with crazy JavaScript tracking 
 
 == Changelog ==
 
+= 1.0.7 =
+
+* Fixed Plugin Path
+
 = 1.0.6 =
 
 * Composer Slug changed
