@@ -3,7 +3,7 @@ Contributors: goaroundagain
 Donate link:
 Tags: affiliate, links, sponsored, nofollow, multisite
 Requires at least: 5.4
-Tested up to: 5.4
+Tested up to: 5.5
 Requires PHP: 7.3
 Stable tag: trunk
 License: GPLv2 or later
