@@ -111,6 +111,8 @@ global $AffiliateLinks;
 $AffiliateLinks = new Links;
 
 add_filter( 'the_content', [ $AffiliateLinks, 'nofollow_content_links' ], 11 );
+add_filter( 'term_description', [ $AffiliateLinks, 'nofollow_content_links' ], 11 );
+add_filter( 'comment_text', [ $AffiliateLinks, 'nofollow_content_links' ], 11 );
 add_filter( 'wp_targeted_link_rel', [ $AffiliateLinks, 'rel_nofollow' ], 10, 2 );
 
 function add_notice( $content ) {
