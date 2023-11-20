@@ -4,7 +4,7 @@ namespace Affiliate_Marker;
  * Plugin Name:			Affiliate Link Marker
  * Plugin URI:			https://go-around.de/plugin/affiliate-marker
  * Description:			Marks Affiliate Links with a * and adds a disclosure at the end of the post.
- * Version:			1.0.7
+ * Version:			1.0.8
  * Requires at least: 		4.6
  * Requires PHP:		7.0
  * Author:			Johannes Kinast <johannes@travel-dealz.de>

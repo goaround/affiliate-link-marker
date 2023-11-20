@@ -2,7 +2,7 @@
 
 - Stable tag: trunk
 - Requires at least: 5.4
-- Tested up to: 6.3
+- Tested up to: 6.4
 - Requires PHP: 7.3
 - License: GPLv2 or later
 - License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -67,6 +67,10 @@ It only works with HTML `<a href="">` links, not with crazy JavaScript tracking 
 1. Every affiliate link is marked by a `*` next to the link text and at the end of post the disclosure will be attached<br>![Affiliate Link and Disclosure](https://raw.githubusercontent.com/goaround/affiliate-link-marker/master/.wordpress-org/screenshot-2.png)
 
 ## Changelog
+
+### 1.0.8
+
+- Fix sanitize callback if the input is an array
 
 ### 1.0.7
 
