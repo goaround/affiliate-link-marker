@@ -122,8 +122,13 @@ class SettingsPage {
 	}
 
 	public function sanitize_domains( $input ) {
-		$domains_textarea = trim( esc_textarea( $input ) );
-		$domains = (array) explode( PHP_EOL, $domains_textarea );
+		if ( is_array( $input ) ) {
+			$domains = array_map( 'esc_textarea', $input );
+		} else {
+			$domains_textarea = trim( esc_textarea( $input ) );
+			$domains = (array) explode( PHP_EOL, $domains_textarea );
+		}
+
 		$domains = array_map( 'trim', $domains );
 
 		return $domains;
