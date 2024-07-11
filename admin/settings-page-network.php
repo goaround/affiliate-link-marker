@@ -6,6 +6,8 @@ use Affiliate_Marker\Admin\SettingsPage;
 
 class NetworkSettingsPage extends SettingsPage {
 
+	protected array $domains;
+
 	public function __construct() {
 		add_action( 'network_admin_menu', [ $this, 'add_plugin_page' ] );
 		add_action( 'admin_init', [ $this, 'page_init' ] );
