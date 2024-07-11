@@ -68,6 +68,10 @@ It only works with HTML `<a href="">` links, not with crazy JavaScript tracking 
 
 ## Changelog
 
+### 1.0.9
+
+- Fix Creation of dynamic property Warning
+
 ### 1.0.8
 
 - Fix sanitize callback if the input is an array
